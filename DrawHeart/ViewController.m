@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 #import "HeartView.h"
+
+NSInteger const heartWidth = 200;
+NSInteger const heartHeight = 200;
+
 @interface ViewController ()
 {
     HeartView *heartView;
@@ -18,7 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    heartView = [[HeartView alloc]initWithFrame:CGRectMake(100, 100, 200, 200)];
+    heartView = [[HeartView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-heartWidth)/2, (self.view.frame.size.height-heartHeight)/2, heartWidth, heartHeight)];
+
     heartView.rate = 0.5;
     heartView.lineWidth = 1;
     heartView.strokeColor = [UIColor blackColor];
@@ -31,7 +36,7 @@
 
 - (void)loadSlider
 {
-    UISlider *valueSlider = [[UISlider alloc]initWithFrame:CGRectMake((self.view.frame.size.width-300)/2, 500, 300, 50)];
+    UISlider *valueSlider = [[UISlider alloc]initWithFrame:CGRectMake((self.view.frame.size.width-300)/2, self.view.frame.size.height-150, 300, 50)];
     valueSlider.minimumValue = 0.0;
     valueSlider.maximumValue = 1.0;
     valueSlider.value = 0.5;
